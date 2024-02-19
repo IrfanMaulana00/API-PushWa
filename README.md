@@ -1,10 +1,12 @@
 # API-PushWa
-API PushWa Whatsapp Gateway
+PushWa - API Whatsapp Gateway Indonesia
 <a href="https://www.postman.com/dark-robot-205579/workspace/api-whatsapp/collection/11510019-ad5d2f03-25c1-4251-8558-b7f8d2d71a5d?action=share&creator=11510019" target="_NEW">Open Postman Link</a><br>
 
 ## Send Message
+
+### Message
 Example PHP Code :
-```
+```php
 <?php
 
 $curl = curl_init();
@@ -36,11 +38,11 @@ curl_close($curl);
 echo $response;
 ```
 
-## Send Attachment
+### Attachment
 You need to send the attachment link in the url parameter.
 
 Example PHP Code :
-```
+```php
 <?php
 
 $curl = curl_init();
@@ -73,11 +75,11 @@ curl_close($curl);
 echo $response;
 ```
 
-## Send Message (Multi Target)
+### Multi Target
 you need to input several target numbers, combine them with a comma separator (,)
 
 Example PHP Code :
-```
+```php
 <?php
 
 $curl = curl_init();
@@ -109,11 +111,11 @@ curl_close($curl);
 echo $response;
 ```
 
-## Send Message (With Variable)
+### Using Variable
 We support the use of variables, you need to add the variable to the target parameter, with the | separator for each variable and call it in the message with {var1} {var} etc
 
 Example PHP Code :
-```
+```php
 <?php
 
 $curl = curl_init();
@@ -143,4 +145,70 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 echo $response;
+```
+
+## Response Send Message
+```json
+{
+    "status": true,
+    "message": "Pesan akan segera diproses.",
+    "idMsg": [
+        151
+    ]
+}
+```
+
+## Check Status Message
+This API is used to check message delivery status.
+
+### Request
+```php
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://dash.pushwa.com/api/statusMessage',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>'{
+    "token": "KldvHyxQ1m8kJY3hLuVGpBUnKJSDHKF3H2HK2",
+    "idMsg" : "148,149,150"
+}',
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/json'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+```
+
+### Response
+```php
+{
+    "status": true,
+    "message": "OK",
+    "data": [
+        {
+            "id": "148",
+            "status": "success"
+        },
+        {
+            "id": "149",
+            "status": "success"
+        },
+        {
+            "id": "150",
+            "status": "success"
+        }
+    ]
+}
 ```
