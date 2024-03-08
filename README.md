@@ -9,6 +9,8 @@ Example PHP Code :
 ```php
 <?php
 
+$token = "YOUR TOKEN";
+
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -20,13 +22,13 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS =>'{
-    "token": "TOKEN",
-    "target" : "62812xxxx", 
-    "type" : "text", 
-    "delay" : "1",
-    "message" : "Hello World"
-}',
+  CURLOPT_POSTFIELDS => json_encode([
+    'token' => $token,
+    'target' => "628123456789",
+    'type' => "text",
+    'delay' => "1",
+    'message' => "Hello Word\nHallo dunia"
+  ]),
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'
   ),
@@ -45,6 +47,8 @@ Example PHP Code :
 ```php
 <?php
 
+$token = "YOUR TOKEN";
+
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -56,14 +60,14 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS =>'{
-    "token": "TOKEN",
-    "target" : "62812xxxx", 
-    "type" : "text", 
-    "delay" : "1",
-    "message" : "Hello World",
+  CURLOPT_POSTFIELDS => json_encode([
+    'token' => $token,
+    'target' => "628123456789",
+    'type' => "image",
+    'delay' => "1",
+    'message' => "Hello Word\nHallo dunia",
     "url" : "https://www.shutterstock.com/image-photo/red-apple-isolated-on-white-600w-1727544364.jpg" 
-}',
+  ]),
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'
   ),
@@ -82,6 +86,8 @@ Example PHP Code :
 ```php
 <?php
 
+$token = "YOUR TOKEN";
+
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -93,13 +99,13 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS =>'{
-    "token": "TOKEN",
-    "target" : "628123456,628897923", 
-    "type" : "text", 
-    "delay" : "1",
-    "message" : "Hello World"
-}',
+  CURLOPT_POSTFIELDS => json_encode([
+    'token' => $token,
+    'target' => "628123456789,62889237498",
+    'type' => "text",
+    'delay' => "1",
+    'message' => "Hello Word\nHallo dunia"
+  ]),
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'
   ),
@@ -118,6 +124,8 @@ Example PHP Code :
 ```php
 <?php
 
+$token = "YOUR TOKEN";
+
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -129,13 +137,13 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS =>'{
-    "token": "TOKEN",
-    "target" : "628123456|Robert|Beijing,628897923|David|Indonesia", 
-    "type" : "text", 
-    "delay" : "1",
-    "message" : "Hello {var1} from {var2}"
-}',
+  CURLOPT_POSTFIELDS => json_encode([
+    'token' => $token,
+    'target' => "628123456|Robert|Beijing,628897923|David|Indonesia", 
+    'type' => "text",
+    'delay' => "1",
+    'message' => "Hello {var1} from {var2}"
+  ]),
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'
   ),
