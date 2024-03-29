@@ -34,8 +34,12 @@ curl_setopt_array($curl, array(
 $response = curl_exec($curl);
 
 curl_close($curl);
-echo $response;
 
+$parse = json_decode($response, true);
+
+if ( isset($parse['qr']) ) {
+  echo 'https://api.qrserver.com/v1/create-qr-code/?data='.urlencode($parse['qr']);
+}
 ```
 
 ### Response
