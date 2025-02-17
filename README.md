@@ -169,7 +169,8 @@ curl_setopt_array($curl, array(
     'target' => "628123456789,62889237498",
     'type' => "text",
     'delay' => "1",
-    'message' => "Hello Word\nHallo dunia"
+    'message' => "Hello Word\nHallo dunia",
+    'sparator' => ","
   ]),
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'
